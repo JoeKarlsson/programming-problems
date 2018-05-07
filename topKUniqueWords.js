@@ -1,27 +1,20 @@
-//@TODO - Make this linear. Hint use a Map and a Linked List
+// Q: Return the top k words and their frequency, given an array of sentences
+// @TODO - You can make this answer linear. Hint use a Map and a Linked List
 
-// top k words by frequency
-// hello 2
-// my 2
-// sam 1
-
-
-// top 10
-// k=10
-function topK(sentences, k) { // O(S * (n * log(n)))
-    if(!sentences || !k) {
+function topK(sentences, k = 2) { // O(S * (n * log(n)))
+    if(!sentences) {
         throw new TypeError('Wrong data type you dingus');
     }
     const wordCount = {};
     const uniqueCount = 0
 
     sentences.forEach((sentence) => { // O(N) where N is num of sentences
-        const words = sentence.split('\s+'); // O(Z) where is num of chars
+        const words = sentence.split(' '); // O(Z) where is num of chars
         words.forEach((word) => { // O(K) where K is num of words
             if (!wordCount.hasOwnProperty(word)) {
                 wordCount[word] = 0;
             }
-            wordCount[word]++; // log(n)
+            wordCount[word]++;
         });
     });
 
@@ -36,10 +29,8 @@ function topK(sentences, k) { // O(S * (n * log(n)))
    return result.splice(0, k);
 }
 
-// [{"word":"sam","count":1}, ]
 
+const sentences1 = ['hello hello my name is Joe Joe', 'hello my name is Sam'];
 
-const sentences1 = ['hello hello my name is Joe Joe', 'hello my name is Sam', '', '          ', 'undefined', '{}9812e09812', null, null, '/n', '√', 'hello      word']; // [{word: 'hello', count: 3}]
-const sentences2 = [];
-
-topK(sentences1, 2);
+const result = topKLinear(sentences1, 2); // [ { word: 'hello', count: 3 }, { word: 'my', count: 2 } ]
+console.log('result', result);

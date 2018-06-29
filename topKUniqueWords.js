@@ -5,24 +5,24 @@ function topK(sentences, k = 2) { // O(S * (n * log(n)))
     if(!sentences) {
         throw new TypeError('Wrong data type you dingus');
     }
-    const wordCount = {};
-    const uniqueCount = 0
+    const wordCount = {}; // O(1)
+    const uniqueCount = 0; // O(1)
 
-    sentences.forEach((sentence) => { // O(N) where N is num of sentences
+    sentences.forEach((sentence) => { // O(N)  where N is num of sentences
         const words = sentence.split(' '); // O(Z) where is num of chars
         words.forEach((word) => { // O(K) where K is num of words
-            if (!wordCount.hasOwnProperty(word)) {
-                wordCount[word] = 0;
+            if (!wordCount.hasOwnProperty(word)) { // O(1)
+                wordCount[word] = 0; // O(1)
             }
-            wordCount[word]++;
+            wordCount[word]++; // O(1)
         });
     });
 
-    const result = Object.keys(wordCount).map(word => { // O(U) num of unique words
+    const result = Object.keys(wordCount).map(word => { // O(U) where U is the num of unique words
         return { word, count: wordCount[word]};
     });
 
-   result.sort((a, b) => { // O(n * log(n)) num of unique words
+   result.sort((a, b) => { // O(n * log(n))  where n is the num of unique words
        return b.count - a.count;
    });
 

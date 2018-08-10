@@ -19,26 +19,22 @@ class IteratorFlattener {
 	}
 
 	next () {
-		if (!this.hasNext()) {
-			throw new Error('No such element')
-		}
 		const iterator = this.interqueue.shift();
-		const val = iterator.next().value;
-		if (this.hasNext()) {
+		let { value, done } = iterator.next();
+
+		if (!value) {
+			value = this.next();
+		}
+		if (!done) {
 			this.interqueue.push(iterator);
 		}
-		return val
+		return value;
 	}
-
-	hasNext (iterator) {
-		return this.interqueue.length !== 0;
-	}
-
 }
 
 const arr1 = ['a1', 'a2', 'a3', 'a4'];
 const arr2 = ['b1', 'b2', 'b3'];
-const arr3 = ['c1', 'c2', 'c3', 'c4'];
+const arr3 = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
 
 const iterator1 = arr1[Symbol.iterator]();
 const iterator2 = arr2[Symbol.iterator]();
@@ -57,17 +53,7 @@ console.log('iteratorFlattener.next()', iteratorFlattener.next()); // c2
 console.log('iteratorFlattener.next()', iteratorFlattener.next()); // a3
 console.log('iteratorFlattener.next()', iteratorFlattener.next()); // b3
 console.log('iteratorFlattener.next()', iteratorFlattener.next()); // c3
-console.log('iteratorFlattener.next()', iteratorFlattener.next()); // a3
-console.log('iteratorFlattener.next()', iteratorFlattener.next()); // a3
-
-
-// const array = ['a', 'b', 'c', 'd', 'e'];
-// const iterator = array[Symbol.iterator]();
-// const first = iterator.next().value
-// console.log('first', first);
-// console.log('iterator.next().value', iterator.next().value); // Since it was skipped, so it's not assigned
-// const third = iterator.next().value
-// console.log('third', third);
-// console.log('iterator.next().value', iterator.next().value); // Since it was skipped, so it's not assigned
-// const last = iterator.next().value
-// console.log('last', last);
+console.log('iteratorFlattener.next()', iteratorFlattener.next()); // a4
+console.log('iteratorFlattener.next()', iteratorFlattener.next()); // c4
+console.log('iteratorFlattener.next()', iteratorFlattener.next()); // c5
+console.log('iteratorFlattener.next()', iteratorFlattener.next()); // c6

@@ -92,10 +92,10 @@ class Emitter {
 
 	  if (this.isValidEvent(eventName)) {
 			const callbacks = events[eventName];
-	    const stringifedCallback = callback.toString();
+	    const stringifedTargetCallback = callback.toString();
 
 			callbacks.forEach((callback, idx) => {
-				if (callback.toString() === stringifedCallback) {
+				if (callback.toString() === stringifedTargetCallback) {
 					events[eventName].splice(idx, 1);
 				}
 			});
@@ -118,8 +118,7 @@ class Emitter {
 		* Much like addListener, except the listener is removed after being invoked.
 		*
 		* @param {string}   eventName    Name of the event to listen to
-		* @param {function} listener Function to invoke only once when the given
-		*                            event is emitted
+		* @param {function} listener Function to invoke only once when the given event is emitted
 	*/
   once(eventName, callback) {
     const emitter = this;
@@ -139,7 +138,9 @@ class Emitter {
 		* @return {array}
 	*/
   listeners(eventName) {
-    return this.events.hasOwnProperty(eventName) ? this.events[eventName] : []
+    return this.events.hasOwnProperty(eventName)
+			? this.events[eventName]
+			: []
   }
 
 }

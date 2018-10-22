@@ -151,8 +151,8 @@ const emitor = new Emitter();
 const callback1 = function(x, y) {console.log(x + y)}
 const callback2 = function(x, y) {console.log(y + x)}
 
-// emitor.addListener('event_1', callback1);
-// emitor.addListener('event_1', callback2);
+emitor.addListener('event_1', callback1);
+emitor.addListener('event_1', callback2);
 //
 // console.log('emitor', emitor);
 //

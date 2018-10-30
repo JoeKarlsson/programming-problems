@@ -1,4 +1,6 @@
+// Given:
 // input [1, 3, [4,6], 0, [ [3, 9], 88]]
+// Return:
 // output [1, 3, 4, 6, 0, 3, 9, 88]
 
 const flattenArr = (arr, flatArr = []) => {

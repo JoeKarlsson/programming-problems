@@ -56,6 +56,9 @@ const evalRPN = tokens => {
       stack.push(parseInt(result));
     }
   });
+  if (stack.length > 1) {
+    throw new Error("Invalid RPN expression");
+  }
   return stack.pop();
 };
 

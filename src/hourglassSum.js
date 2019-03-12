@@ -60,9 +60,10 @@ function calcHourglassSumm (x,y,arr) {
     sum += arr[y-1][x]; // bottom middle
     sum += arr[y-1][x+1]; // bottom right
     return sum;
-    
 }
 
+
+// O(n^2)
 function hourglassSum(arr) {
     let maxHourglassSum = -Infinity;
 

@@ -15,3 +15,11 @@
 function rotLeft(arr, d) {
     
 }
+
+const test1 = [1,2,3,4,5];
+
+console.log('rotLeft(test1, 2)', rotLeft(test1, 2)); // [3,4,5,1,2]
+// console.log('rotLeft(test1, 5)', rotLeft(test1, 5)); // [1,2,3,4,5]
+
+
+//abbrevaite word accesibility => a11y

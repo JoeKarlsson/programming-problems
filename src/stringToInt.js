@@ -41,7 +41,6 @@ function stringToInt(num) {
         return multiplyByTenNTimes(numInt, multiplierAmount);
     })
     .reduce((prev, curr) => prev + curr);
-
 };
 
 

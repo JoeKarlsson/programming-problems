@@ -1,0 +1,24 @@
+{
+  "name": "programming-problems",
+  "version": "1.0.0",
+  "description": "Solutions for various programming problems",
+  "main": "arraySums.js",
+  "dependencies": {
+    "nodemon": "^1.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon arraySums.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeKarlsson/programming-problems.git"
+  },
+  "author": "Joe <joekarlsson1@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeKarlsson/programming-problems/issues"
+  },
+  "homepage": "https://github.com/JoeKarlsson/programming-problems#readme"
+}

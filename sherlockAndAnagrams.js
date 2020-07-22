@@ -22,60 +22,29 @@ Sample Output 0
  * 
  */
 
-const findAllSubStrings = (s) => {
-  let allSubStrings = [];
-
-  // Loop through all of the substrings of s O(n^2)
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i + 1; j < s.length + 1; j++) {
-      allSubStrings.push(s.slice(i, j));
-    }
-  }
-  return allSubStrings;
-};
-
-const duplicatesInArr = (arr) => {
-  arr.forEach((el) => {
-    counts[el] = (counts[el] || 0) + 1;
-  });
-  return counts;
-};
-
-const reverseString = (str) => {
-  return str.split("").reverse().join("");
-};
-reverseString("hello");
-
 function sherlockAndAnagrams(s) {
-  let subStrings = {};
-  let result = 0;
+  let anagrams = 0;
 
-  // Loop through all of the substrings of s O(n^2)
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i + 1; j < s.length + 1; j++) {
-      const subString = s.slice(i, j);
-      if (!(subString in subStrings)) {
-        subStrings[subString] = 1;
-        // check if the revese has been added yet
-        const reverseSubStr = reverseString(subString);
+  for (let x = 1; x < s.length + 1; x++) {
+    const stringMap = {};
 
-        if (
-          reverseSubStr.length > 1 &&
-          reverseSubStr.length < s.length &&
-          reverseSubStr in subStrings
-        ) {
-          subStrings[subString]++;
-        }
-      } else {
-        // substring already in chache
-        subStrings[subString]++;
-      }
+    for (let y = 0; y < s.length - x + 1; y++) {
+      const string = s
+        .substring(y, y + x)
+        .split("")
+        .sort()
+        .join("");
+      stringMap[string] = (stringMap[string] || 0) + 1;
     }
+    console.log(stringMap);
+
+    Object.values(stringMap).forEach((value) => {
+      anagrams += (value * (value - 1)) / 2;
+    });
   }
-  console.log(subStrings);
-  return result;
+  return anagrams;
 }
 
-// console.log(sherlockAndAnagrams("abba")); // 4
+console.log(sherlockAndAnagrams("abba")); // 4
 // console.log(sherlockAndAnagrams("abcd")); // 0
-console.log(sherlockAndAnagrams("kkkk")); // 10
+// console.log(sherlockAndAnagrams("kkkk")); // 10

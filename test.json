@@ -1,0 +1,12 @@
+{
+  "previous": null,
+  "data": "Cat",
+  "next": {
+    "previous": null,
+    "data": "Dog",
+    "next": {
+      "data": "Bird",
+      "next": null
+    }
+  }
+}

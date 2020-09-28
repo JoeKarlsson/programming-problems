@@ -44,7 +44,6 @@ const twoString = (s1, s2) => {
   });
 
   // check if str2 is in the cache?
-  console.log(subStringCache);
   arr2.forEach((letter) => {
     if (letter in subStringCache) {
       subStringExists = "YES";
